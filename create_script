@@ -15,7 +15,6 @@ if [[ ! $choice ]]; then
 		cd directory_one
 		echo "changed directory to directory_one"
 		file="sample_file.txt"
-		file2="copy_file.txt"
 		#create a file
 		touch $file
 		#add content into the file
@@ -35,7 +34,6 @@ sleep 5
 tree
 # input redirection and piping
 count=$(tr '[[:space:]]' '\n' <"directory_one/${file}" | grep -c -e "$word")
-# grep This | wc -l < directory_one/${file} > lines_count.txt
 printf "${count}\n" >> words_count.txt
 continue
 echo "exiting successfully..."

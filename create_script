@@ -33,5 +33,11 @@ echo "listing the folders and file ..."
 sleep 5
 # directories and their contents
 tree
-
-
+# input redirection and piping
+count=$(tr '[[:space:]]' '\n' <"directory_one/${file}" | grep -c -e "$word")
+# grep This | wc -l < directory_one/${file} > lines_count.txt
+printf "${count}\n" >> words_count.txt
+continue
+echo "exiting successfully..."
+sleep 5
+exit 0

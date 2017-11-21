@@ -1,0 +1,37 @@
+#!/bin/bash
+
+#create two directories
+directories="directory_one directory_two"
+mkdir $directories
+
+printf "Directory %s created.\n" $directories
+
+echo "want to navigate into directory_one?(Y/n)"
+# listen for user's input to make a decision
+if [[ ! $choice ]]; then
+	read -r -n 1 -s answer
+	if [[ $answer = [Yy] ]]; then
+		#enter into the created directory
+		cd directory_one
+		echo "changed directory to directory_one"
+		file="sample_file.txt"
+		file2="copy_file.txt"
+		#create a file
+		touch $file
+		#add content into the file
+		printf "%s\n  %s\n  %s\n" "This is the start" "This is line two" "The end" >> sample_file.txt
+		printf "Created %s and loaded content \n" $file
+		
+	elif [[ $answer = [Nn] ]]; then
+		echo "Abortinng script..."
+		exit 0
+	fi
+fi
+cd ../
+cp directory_one/${file} ./directory_two
+echo "listing the folders and file ..."
+sleep 5
+# directories and their contents
+tree
+
+
